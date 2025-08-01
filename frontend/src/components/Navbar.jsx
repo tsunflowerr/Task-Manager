@@ -1,11 +1,11 @@
-import React, { use } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ChevronDown, Settings, Zap } from 'lucide-react';
+import { ChevronDown, LogOut, Settings, Zap } from 'lucide-react';
 
-const Navbar = () => {
+const Navbar = ({user = {}, onLogOut}) => {
     const navigate = useNavigate();
     const menuref = React.useRef(null);
-    cosnt [menuOpen, setMenuOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
     const handleMenuToggle = () => setMenuOpen((prev)=> !prev);
 
     const handleLogout = () => {
@@ -38,11 +38,11 @@ const Navbar = () => {
                     <div ref={menuref} className = 'relative'>
                         <button onClick={handleMenuToggle} className= 'flex items-center gap-2 px-3 py-2 rounded-transparent hover:bg-purple-200'>
                             <div className= 'relative'>
-                                {User.avatar ? (
-                                    <img src={User.avatar} alt="Avatar" className="w-9 h-9 rounded-full shadow-sm" />
+                                {user.avatar ? (
+                                    <img src={user.avatar} alt="Avatar" className="w-9 h-9 rounded-full shadow-sm" />
                                 ) : (
                                     <div className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-fuchsia-500 to-purple-600 text-white font-semibold shadow-md">
-                                        {User.name?.[0]?.toUpperCase() || 'U'}
+                                        {user.name?.[0]?.toUpperCase() || 'U'}
                                     </div>
                                 )}
                                 <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-400 rounded-full border-2 boder-white animate-pulse">
@@ -50,8 +50,8 @@ const Navbar = () => {
                             </div>
 
                             <div className = 'text-left hidden md:block'>
-                                <p classname = 'text-sm font-medium text-gray-800'>{User.name} </p>
-                                <p className = 'text-xs text-gray-500'>{User.email}</p> 
+                                <p className = 'text-sm font-medium text-gray-800'>{user.name} </p>
+                                <p className = 'text-xs text-gray-500'>{user.email}</p> 
                             </div>
 
                             <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform duration-300 ${menuOpen ? 'rotate-180' : ''}`} />

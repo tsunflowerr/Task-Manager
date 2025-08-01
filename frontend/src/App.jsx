@@ -1,5 +1,5 @@
-import React from "react"
-import { Outlet, Route, useAsyncValue } from "react-router-dom"
+import React, {useEffect, useState} from "react"
+import { Outlet, Route, Routes, useNavigate } from "react-router-dom"
 import Layout from "./components/Layout"
 import Login from "./components/Login"
 import SignUp from "./components/SignUp"
@@ -46,12 +46,12 @@ const App = () => {
     <Routes>
       <Route path='/login' element={<div className="fixed inset-0 bg-black bg-opacity-50 flex items-center
       justify-center">
-        <Login onSubmit={handleAuthSubmit} onSwitchMode ={() => nevigate('/signup')}/>
+        <Login onSubmit={handleAuthSubmit} onSwitchMode ={() => navigate('/signup')}/>
       </div>} />
 
       <Route path='/signup' element={<div className="fixed inset-0 bg-black bg-opacity-50 flex items-center
       justify-center">
-        <SignUp onSubmit={handleAuthSubmit} onSwitchMode ={() => nevigate('/login')}/>
+        <SignUp onSubmit={handleAuthSubmit} onSwitchMode ={() => navigate('/login')}/>
       </div>} />
 
       <Route path='/' element={<Layout />} />
