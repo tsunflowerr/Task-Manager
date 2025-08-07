@@ -1,10 +1,10 @@
 import React, {  useCallback, useEffect, useMemo, useState } from "react";
 import NavBar from "./NavBar";
-import  Sidebar, { Circle }  from "lucide-react";
+import {Sidebar, Circle }  from "lucide-react";
 import { Outlet } from "react-router-dom";
 import axios from "axios";
-import { TreadingUp } from 'lucide-react';
-impor
+import { TrendingUp, Clock } from 'lucide-react';
+
 
 const Layout = ({onLogout, user}) => {
     const [tasks, setTasks] = React.useState([]);
@@ -111,7 +111,7 @@ const Layout = ({onLogout, user}) => {
                     <div className= 'xl:col-span-1 space-y-4 sm:space-y-6'>
                         <div className = 'bg-white rounded-xl p-4 sm:p-5 shadow-sm border border-purple-100'>
                             <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-gray-800 flex items-center gap-2">
-                                <TreadingUp className="w-4 h-4 sm:w-5 sm:h-5 text-purple-500" />
+                                <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-purple-500" />
                                 Task Statistics
                             </h3>
                             
