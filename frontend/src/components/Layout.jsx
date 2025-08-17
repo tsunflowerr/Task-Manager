@@ -1,9 +1,10 @@
 import React, {  useCallback, useEffect, useMemo, useState } from "react";
 import NavBar from "./NavBar";
-import {Sidebar, Circle }  from "lucide-react";
+import { Circle, Zap }  from "lucide-react";
 import { Outlet } from "react-router-dom";
 import axios from "axios";
 import { TrendingUp, Clock } from 'lucide-react';
+import Sidebar from "./Sidebar";
 
 
 const Layout = ({onLogout, user}) => {
@@ -25,8 +26,8 @@ const Layout = ({onLogout, user}) => {
             })
 
             const arr = Array.isArray(data) ? data : 
-            Array.isArray(data?.tasks) ? data.tasks : 
-            Array.isArray(data?.data) ? data.data : []
+                Array.isArray(data?.tasks) ? data.tasks : 
+                    Array.isArray(data?.data) ? data.data : []
             setTasks(arr);
         }
         catch(error) {
@@ -85,7 +86,7 @@ const Layout = ({onLogout, user}) => {
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500"></div>
         </div>
     )
-    //Error
+
     if(error) return (
         <div className="min-h-screen bg-gray-50 flex items-center justify-center">
             <div className = 'bg-red-50 text-red-600 p-4 rounded-x1 border border-red-100 max-w-md'>
@@ -95,7 +96,7 @@ const Layout = ({onLogout, user}) => {
                     Try Again
                 </button>
             </div>
-        </div>
+        </div>       
     )
     return (
         <div className = 'min-h-screen bg-gray-50'>
@@ -119,7 +120,7 @@ const Layout = ({onLogout, user}) => {
                                 <StatCard title = "Total Tasks" value = {stats.totalCount} icon = {<Circle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-500" />} />
                                 <StatCard title = "Completed" value = {stats.completedTasks} icon = {<Circle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-500" />} />
                                 <StatCard title = "Pending" value = {stats.pendingCount} icon = {<Circle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-fuchsia-500" />} />
-                                <StatCard title = "Completion Rate" value = {`${stats.completionPercentage}%`} icon = {<Circle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-500" />} />
+                                <StatCard title = "Completion Rate" value = {`${stats.completionPercentage}%`} icon = {<Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-500" />} />
                             </div>
                             <hr className= 'my-3 sm:my-4 border-purple-100'></hr>
 
@@ -171,7 +172,7 @@ const Layout = ({onLogout, user}) => {
                                 {tasks.length === 0 && (
                                     <div className="text-center py-4 sm:py-6 px-2">
                                         <div className = 'w-12 h-12 sm:h-16 mx-auto sm:mb-4 rounded-full bg-purple-100 flex items-center justify-center'>
-                                            <Clock class name="w-6 h-6 sm:w-8 sm:h-8 text-purple-500" />
+                                            <Clock className="w-6 h-6 sm:w-8 sm:h-8 text-purple-500" />
                                         </div>
                                         <p className = 'text-sm text-gray-500'>
                                             No recent activity 

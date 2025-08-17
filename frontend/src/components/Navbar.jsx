@@ -36,7 +36,7 @@ const Navbar = ({user = {}, onLogOut}) => {
 
                     {/* User dropdown */}
                     <div ref={menuref} className = 'relative'>
-                        <button onClick={handleMenuToggle} className= 'flex items-center gap-2 px-3 py-2 rounded-transparent hover:bg-purple-200'>
+                        <button onClick={handleMenuToggle} className= 'flex items-center gap-2 px-3 py-2 rounded-2xl bg-transparent hover:bg-purple-200'>
                             <div className= 'relative'>
                                 {user.avatar ? (
                                     <img src={user.avatar} alt="Avatar" className="w-9 h-9 rounded-full shadow-sm" />
