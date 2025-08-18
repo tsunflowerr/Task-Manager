@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChevronDown, LogOut, Settings, Zap } from 'lucide-react';
 
-const Navbar = ({user = {}, onLogOut}) => {
+const Navbar = ({user = {}, onLogout}) => {
     const navigate = useNavigate();
     const menuref = React.useRef(null);
     const [menuOpen, setMenuOpen] = useState(false);
@@ -10,7 +10,7 @@ const Navbar = ({user = {}, onLogOut}) => {
 
     const handleLogout = () => {
         setMenuOpen(false)
-        onLogOut()
+        onLogout()
     }
     return (
         <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-200 font-sans">
