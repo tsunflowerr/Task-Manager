@@ -3,14 +3,14 @@ import {toast, ToastContainer} from 'react-toastify'
 import { BACK_BUTTON, DANGER_BTN, FULL_BUTTON, INPUT_WRAPPER, personalFields, SECTION_WRAPPER, securityFields } from "../assets/dummy";
 import { ChevronLeft, LogOut, Save, Lock, Shield, UserCircle } from "lucide-react";
 import axios from "axios";
-import { data } from "react-router-dom";
+import { data, useNavigate } from "react-router-dom";
 
 const API_URL = 'http://localhost:4000'
 
 const Profile = ({setCurrentUser, onLogout}) => {
     const[profile, setProfile] = useState({name: "", email:""})
     const[password, setPasswords] = useState({current:"", new:"", confirm:""})
-    const navigate = useState();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const token = localStorage.getItem('token')
@@ -67,7 +67,7 @@ const Profile = ({setCurrentUser, onLogout}) => {
         <div className="min-h-screen bg-gray-50">
             <ToastContainer position="top-center" autoClose={3000} />
             <div className="max-w-4xl mx-auto p-6">
-                <button onClick={() => navigate(-1)} className={BACK_BUTTON}>
+                <button onClick={() => navigate('/')} className={BACK_BUTTON}>
                     <ChevronLeft className="w-5 h-5 mr-1" />
                     Back to DashBoard
                 </button>
