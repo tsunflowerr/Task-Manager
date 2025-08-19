@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChevronDown, LogOut, Settings, Zap } from 'lucide-react';
 
@@ -12,6 +12,16 @@ const Navbar = ({user = {}, onLogout}) => {
         setMenuOpen(false)
         onLogout()
     }
+
+    useEffect(() => {
+        const handleClickOutside =(event) => {
+            if(menuref.current && !menuref.current.contains(event.target)) {
+                setMenuOpen(false)
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside)
+        return() => document.removeEventListener("mousedown", handleClickOutside)
+    }, [])
     return (
         <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-200 font-sans">
             <div className="flex items-center justify-between px-4 py-3 md:px-6 md:w-7xl mx-auto">

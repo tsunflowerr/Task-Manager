@@ -49,7 +49,7 @@ export const getTaskById = async(req, res) => {
 export const updateTask = async (req, res) => {
     try {
         const data = {...req.body};
-        if(datat.completed !== undefined) {
+        if(data.completed !== undefined) {
             data.completed = data.completed === 'Yes' || data.completed === true;
         }
         const updated = await Task.findOneAndUpdate({_id: req.params.id, owner: req.user}, data, {new: true, runValidators: true});

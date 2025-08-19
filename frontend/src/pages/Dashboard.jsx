@@ -40,12 +40,12 @@ const DashBoard = () => {
         }
     }), [tasks, filter])
 
-    //SAVING Tasks
+    //SAVING Tasks  
     const handleTaskSave = useCallback(async(taskData) =>{
         try{
-            if(taskData.id) await axios.put(`${API_BASE}/${tasks.id}/gp`,taskData)
-                refreshTasks()
-            setShowModal(false)
+            if(taskData.id) await axios.put(`${API_BASE}/${taskData.id}/gp`,taskData)
+            refreshTasks()
+            setShowModal(false) 
             setSelectTask(null)
         }
         catch(error) {
@@ -143,8 +143,8 @@ const DashBoard = () => {
                     <span className="text-gray-500 font-medium">Add New Task</span>
                 </div>
             </div>
-            {/*MODAL*/}
-            <TaskModal isOpen={showModal ||!!selectedTask} onCLose={() =>{setShowModal(false); setSelectTask(null)}} taskToEdit={selectedTask} onSave={handleTaskSave}/>
+            {/*MODAL*/} 
+            <TaskModal isOpen={showModal ||!!selectedTask} onClose={() =>{setShowModal(false); setSelectTask(null)}} taskToEdit={selectedTask} onSave={handleTaskSave}/>
         </div>
     );
 }

@@ -4,7 +4,7 @@ import { AlignLeft, Calendar, Plus, PlusCircle, Save, X, Flag, CheckCircle } fro
 
 const API_BASE = "http://localhost:4000/api/tasks"
 
-const TaskModal = ({isOpen, onClose, taskToEidt, onSave,onLogout}) => {
+const TaskModal = ({isOpen, onClose, taskToEdit, onSave,onLogout}) => {
 
     const [taskData, setTaskData] = useState(DEFAULT_TASK)
     const [loading, setLoading] = useState(false)
@@ -13,23 +13,23 @@ const TaskModal = ({isOpen, onClose, taskToEidt, onSave,onLogout}) => {
 
     useEffect(() =>{
         if(!isOpen) return 
-        if(taskToEidt) {
-            const normalized =  taskToEidt.completed === 'Yes' || taskToEidt.completed === true ? 'Yes' : 'No';
+        if(taskToEdit) {
+            const normalized =  taskToEdit.completed === 'Yes' || taskToEdit.completed === true ? 'Yes' : 'No';
             setTaskData({
                 ...DEFAULT_TASK,
-                title: taskToEidt.title || '',
-                description: taskToEidt.description || '',
-                priority: taskToEidt.priority || 'Low',
-                dueDate: taskToEidt.dueDate?.split('T')[0] || '',
+                title: taskToEdit.title || '',
+                description: taskToEdit.description || '',
+                priority: taskToEdit.priority || 'Low',
+                dueDate: taskToEdit.dueDate?.split('T')[0] || '',
                 completed: normalized,
-                id: taskToEidt._id,
+                id: taskToEdit._id,
             })
         }
         else {
             setTaskData(DEFAULT_TASK)
         }
         setError(null)
-    }, [isOpen, taskToEidt])
+    }, [isOpen, taskToEdit])
 
     const handleChange = useCallback((e) => {
         const {name,value} = e.target 
@@ -56,7 +56,9 @@ const TaskModal = ({isOpen, onClose, taskToEidt, onSave,onLogout}) => {
 
         try {
             const isEdit = Boolean(taskData.id);
-            const url = isEdit ? `${taskData.id}/gp` : `${API_BASE}/gp`
+            const url = isEdit 
+                        ? `${API_BASE}/${taskData.id}/gp` 
+                        : `${API_BASE}/gp`;
             const resp = await fetch(url, {
                 method : isEdit ? 'PUT' : 'POST',
                 headers: getHeaders(),
@@ -80,7 +82,7 @@ const TaskModal = ({isOpen, onClose, taskToEidt, onSave,onLogout}) => {
         }
     },[taskData, today, getHeaders, onLogout, onSave, onClose])
 
-    if(!isOpen) return null;
+    if(!isOpen) return null
     return (
         <div className="fixed inset-0 backdrop-blur-sm bg-black/20 z-50 flex items-center justify-center p-4">
             <div className="bg-white border border-purple-100 rounded-xl max-w-md w-full shadow-lg relative p-6 animate-fadeIn">
