@@ -7,7 +7,6 @@ import { NavLink } from "react-router-dom";
 const Sidebar = ({user, tasks}) => {
 
     const [mobileOpen, setMobileOpen] = React.useState(false);
-    const [showModal, setShowModal] = React.useState(false);
 
     const tottalTasks = tasks?.length || 0;
     const completedTasks = tasks?.filter(t => t.completed).length || 0;

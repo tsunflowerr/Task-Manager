@@ -52,7 +52,7 @@ export const updateTask = async (req, res) => {
         if(data.completed !== undefined) {
             data.completed = data.completed === 'Yes' || data.completed === true;
         }
-        const updated = await Task.findOneAndUpdate({_id: req.params.id, owner: req.user}, data, {new: true, runValidators: true});
+        const updated = await Task.findOneAndUpdate({_id: req.params.id, owner: req.user._id}, data, {new: true, runValidators: true});
         if(!updated) {
             return res.status(404).json({success: false, message: "Task not found or not yours"});
         }
