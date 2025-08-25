@@ -61,7 +61,7 @@ const Layout = ({onLogout, user}) => {
             pendingCount,
             completionPercentage
         }
-    })
+    },[tasks])
     //STATISTIC CARD
     const StatCard = ({title, value, icon}) => (
         <div className = 'p-2 sm:p-3 rounded-x1 bg-white shadow-sm border border-purple-100 hover:shadow-md transition-all duration-300 hover:border-purple-100 group'>
@@ -159,7 +159,7 @@ const Layout = ({onLogout, user}) => {
                                                 {task.title}
                                             </p>
                                             <p className= 'text-xs text-gray-500 mt-0.5'>
-                                                {task.createAt ? new Date(task.createdAt).toLocaleDateString() : "Unknown Date"}
+                                                {task.createAt ? new Date(task.createAt).toLocaleDateString() : "Unknown Date"}
                                             </p>
                                         </div>
                                         

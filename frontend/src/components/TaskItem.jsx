@@ -28,7 +28,6 @@ const TaskItem = ({task, onRefresh,onLogout, showCompleteCheckBox = true }) => {
         if(!token) throw new Error("No auth token found")
         return {Authorization: `Bearer ${token}`}
 
-
     }
 
     const borderColor = isCompleted ? "border-green-500" : getPriorityColor(task.priority).split(" ")[0]
