@@ -58,7 +58,7 @@ TaskFlow is a modern task management application designed to help users organize
 
 4. Create `.env` file in the backend directory:
    ```env
-   MONGODB_URI=your_mongodb_uri
+   ConnectDB=your_mongodb_uri
    ```
 
 5. Start the server:
@@ -69,7 +69,7 @@ TaskFlow is a modern task management application designed to help users organize
 ### Frontend Setup
 1. Navigate to frontend directory:
    ```bash
-   cd ../frontend
+   cd frontend
    ```
 2. Install core dependencies:
    ```bash
