@@ -1,5 +1,5 @@
 import React, {  useCallback, useEffect, useMemo, useState } from "react";
-import NavBar from "./NavBar";
+import NavBar from "./Navbar";
 import { Circle, Zap }  from "lucide-react";
 import { Outlet } from "react-router-dom";
 import axios from "axios";

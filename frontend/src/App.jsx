@@ -55,7 +55,7 @@ const App = () => {
 
       <Route path='/signup' element={<div className="fixed inset-0 bg-black bg-opacity-50 flex items-center
       justify-center">
-        <SignUp onSubmit={handleAuthSubmit} onSwitchMode ={() => navigate('/login')}/>
+        <SignUp onSwitchMode ={() => navigate('/login')}/>
       </div>} />
 
       <Route element={currentUser ? <PortectedLayout/>: 

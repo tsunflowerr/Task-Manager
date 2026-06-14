@@ -68,7 +68,7 @@ const Login = ({onSubmit,onSwitchMode}) => {
             const msg = error.response?.data?.message || error.message 
             toast.error(msg);
         }
-    finally{
+        finally{
         setLoading(false);  
     }
 } // <-- Add this closing brace for handleSubmit
@@ -142,6 +142,7 @@ return (
                 </button>
             </p>
         </div> 
+
     )
 }
 export default Login;
